@@ -39,7 +39,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/multiplatform-app-matrix:latest
+          tags: ghcr.io/${{ github.repository_owner }}/multiplatform-app-${{ matrix.platform }}:latest
           platforms: ${{ matrix.platform }}
 
       - name: Build and push Docker image to Github Repo as multiplatform
@@ -70,5 +70,5 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/github-matrix:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/github-${{ matrix.platform }}:latest
           platforms: ${{ matrix.platform }}
